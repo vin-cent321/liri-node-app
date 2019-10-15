@@ -11,7 +11,7 @@ var spotify = new Spotify(keys.spotify);
 
 var axios = require("axios");
 
-var moment = request("moment");
+var moment = require('moment');
 
 let userInput = process.argv[2];
 let userQuery = process.argv.slice(3).join(" ");
@@ -38,15 +38,15 @@ function userCommand(userInput, userQuery) {
 
 userCommand(userInput, userQuery);
 
-function concertThis(artist) {
-    console.log("Searching for..." + userQuery + "'s next show...");
-    
-    var artist = userSearch;
-    var bandQueryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
+function concertThis() {
+
+
+    var bandQueryURL = "https://rest.bandsintown.com/artists/" + userQuery + "/events?app_id=codingbootcamp"
 
     axios.get(bandQueryURL).then(
         function (response) {
-        console.log("Name of venue: " + response.data[0].venue.name + "\nVenue Location: " + response.data[0].venue.vity + "\nDate of event: " + moment(response.data[0].datatime).format("MM-DD-YYYY"));
+            console.log("Searching for..." + userQuery + "'s next show...");
+            console.log("Name of venue: " + response.data[0].venue.name + "\nVenue Location: " + response.data[0].venue.city + "\nDate of event: " + moment(response.data[0].datatime).format("MM-DD-YYYY"));
         });
 }
 
@@ -97,15 +97,17 @@ function movieThis() {
     );
 }
 
-//function doThis() {
-   // fs.readFile("random.txt", "utf8", function (error, data){
-     //   if (error) {return console.log(error); }
+function doThis() {
+    fs.readFile("random.txt", "utf8", function (error, data) {
+        if (error) {
+            return console.log(error);
+        }
 
-       // let dataArr = data.split(",");
+        let dataArr = data.split(",");
 
-        //userInput = dataArr[0];
-        //userQuery = dataArr[1];
+        userInput = dataArr[0];
+        userQuery = dataArr[1];
 
-        //userCommand(userInput, userQuery);
-  //  })
-//}
+        userCommand(userInput, userQuery);
+    })
+}
