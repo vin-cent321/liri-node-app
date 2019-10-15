@@ -1,7 +1,5 @@
 require("dotenv").config();
 
-let request = require("request");
-
 var fs = require('fs');
 
 var keys = require("./keys.js");
