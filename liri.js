@@ -9,7 +9,9 @@ var keys = require("./keys.js");
 var Spotify = require('node-spotify-api');
 var spotify = new Spotify(keys.spotify);
 
-var bandsintown = (keys.bandsintown);
+var axios = require("axios");
+
+var moment = request("moment");
 
 let userInput = process.argv[2];
 let userQuery = process.argv.slice(3).join(" ");
@@ -36,6 +38,18 @@ function userCommand(userInput, userQuery) {
 
 userCommand(userInput, userQuery);
 
+function concertThis(artist) {
+    console.log("Searching for..." + userQuery + "'s next show...");
+    
+    var artist = userSearch;
+    var bandQueryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp"
+
+    axios.get(bandQueryURL).then(
+        function (response) {
+        console.log("Name of venue: " + response.data[0].venue.name + "\nVenue Location: " + response.data[0].venue.vity + "\nDate of event: " + moment(response.data[0].datatime).format("MM-DD-YYYY"));
+        });
+}
+
 function spotifyThisSong() {
     console.log("Searching for..." + userQuery);
 
@@ -60,3 +74,38 @@ function spotifyThisSong() {
 
     });
 }
+
+function movieThis() {
+    console.log("Searching for..." + userQuery);
+    if (!userQuery) {
+        userQuery = "mr nobody"
+    };
+
+    axios.get("http://www.omdbapi.com/?t=" + userQuery + "&apikey=eae9daa4").then(
+        function (response) {
+
+            let ratingsArr = response.data.Ratings;
+            if (ratingsArr.length > 2) {}
+
+            if (userQuery) {
+                console.log("Title " + response.data.Title + "\nCast: " + response.data.Actors + "\nReleased: " + response.data.Year + "\nLanguage: " + response.data.Language + "\nPlot: " + response.data.Plot + "\nIMDB Rating: " + response.data.imdbRating + "\nCountry: " + response.data.Country + "\nRotten Tomatoes Rating: " + response.data.Ratings[1].Value)
+            } else {
+                return console.log("Movie able to be found, Error:" + error)
+            };
+
+        }
+    );
+}
+
+//function doThis() {
+   // fs.readFile("random.txt", "utf8", function (error, data){
+     //   if (error) {return console.log(error); }
+
+       // let dataArr = data.split(",");
+
+        //userInput = dataArr[0];
+        //userQuery = dataArr[1];
+
+        //userCommand(userInput, userQuery);
+  //  })
+//}
