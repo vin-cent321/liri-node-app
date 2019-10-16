@@ -65,3 +65,7 @@ It will run `spotify-this` for "I Want it That Way," as follows the text in `ran
 ### Deployed Version Link
 
 `https://vin-cent321.github.io/liri-node-app/`
+
+### Video Link
+
+`https://drive.google.com/file/d/12xByAWc4kS2Y3k5Z8rsoRLIfSL2s30To/view`
