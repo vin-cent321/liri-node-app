@@ -32,7 +32,7 @@ liri.js also takes in the following commands:
 This will search the Bands in Town Artist Events API for an artist and render the name of the venue, 
 venue location, and date of the event (in moment format "MM/DD/YYYY") for their most upcoming event.
 
-2. `node liri.js spotify-this-song '<song name here>'`
+2. `node liri.js spotify-this '<song name here>'`
 
 This will search the Spotify API based on the song the user inputs in terminal/bash and output the artist,
 song name, a preview link of the song from Spotify, and the album that the song is from. 
@@ -56,7 +56,7 @@ This will output the following information to your terminal/bash window from the
 
 * If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
 
-4. `node liri.js do-what-it-says`
+4. `node liri.js do-this`
 
 Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
 
