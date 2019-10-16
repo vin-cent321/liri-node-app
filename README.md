@@ -61,3 +61,7 @@ This will output the following information to your terminal/bash window from the
 Using the `fs` Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
 
 It will run `spotify-this` for "I Want it That Way," as follows the text in `random.txt`.
+
+### Deployed Version Link
+
+`https://vin-cent321.github.io/liri-node-app/`
